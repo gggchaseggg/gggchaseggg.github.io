@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
 
-permissions:  # 👈 Добавьте этот блок
+permissions:
   contents: write
 
 jobs:
@@ -15,13 +15,14 @@ jobs:
       
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
           cache: 'npm'
       
       - name: Install and build
-        run: |
-          npm ci
-          npm run build
+        run: npm ci
+
+      - name: Build
+        run: npm run build
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
