@@ -12,7 +12,7 @@ jobs:
       
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
           cache: 'npm'
       
       - name: Install and build
@@ -20,10 +20,9 @@ jobs:
           npm ci
           npm run build
       
-      - name: Deploy to main
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main  # 👈 ключевое изменение!
+          publish_branch: gh-pages 
           publish_dir: ./dist
-          force_orphan: true    # 👈 очищает ветку перед деплоем
