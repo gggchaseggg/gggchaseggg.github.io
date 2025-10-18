@@ -1,30 +1,29 @@
 name: Deploy to GitHub Pages
 
 on:
-  push: 
+  push:
     branches: [ main ]
 
-jobs: 
+jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '18'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy
+      
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Deploy to main
         uses: peaceiris/actions-gh-pages@v3
-        with: 
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: main  # 👈 ключевое изменение!
           publish_dir: ./dist
+          force_orphan: true    # 👈 очищает ветку перед деплоем
