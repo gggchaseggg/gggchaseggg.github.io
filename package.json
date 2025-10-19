@@ -1,26 +1,27 @@
 {
-  "name": "gggchaseggg.github.io",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router": "^7.9.4"
-  },
-  "devDependencies": {
-    "@types/node": "^24.6.0",
-    "@types/react": "^19.1.16",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react-swc": "^4.1.0",
-    "globals": "^16.4.0",
-    "sass": "^1.93.2",
-    "typescript": "~5.9.3",
-    "vite": "^7.1.7"
-  }
+	"name": "gggchaseggg.github.io",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"react": "19.1.1",
+		"react-dom": "19.1.1",
+		"react-router": "7.9.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.6",
+		"@types/node": "24.6.0",
+		"@types/react": "19.1.16",
+		"@types/react-dom": "19.1.9",
+		"@vitejs/plugin-react-swc": "4.1.0",
+		"globals": "16.4.0",
+		"sass": "1.93.2",
+		"typescript": "5.9.3",
+		"vite": "7.1.7"
+	}
 }
