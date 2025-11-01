@@ -1,7 +1,5 @@
 import { create } from 'zustand'
 
-import { APP_CONFIG } from '@tt/config'
-
 import { mockMatch } from './mock'
 import type { Match } from './models'
 import { updateSet } from './utils'
