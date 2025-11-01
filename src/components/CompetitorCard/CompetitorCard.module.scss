@@ -1,0 +1,41 @@
+.competitorCard {
+  width: 500px;
+  height: 500px;
+  font-family: var(--font);
+  font-weight: bolder;
+  font-size: 256px;
+  background-color: var(--first-competitor-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 24px;
+  border: 6px solid transparent;
+}
+
+.firstServer {
+  background-color: var(--first-competitor-color);
+}
+
+.secondServer {
+  background: var(--second-competitor-color);
+}
+
+.firstDefender {
+  border-color: var(--first-competitor-color);
+  color: var(--first-competitor-color);
+}
+
+.secondDefender {
+  border-color: var(--second-competitor-color);
+  color: var(--second-competitor-color);
+}
+
+.server {
+  color: white;
+}
+
+.defender {
+  background-color: white;
+}

@@ -1,0 +1,64 @@
+.scoreBlock {
+    display: flex;
+    cursor: default;
+
+    & > span {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    width: 46px;
+    height: 20px;
+    background-color: var(--first-competitor-color);
+    color: var(--score-color);
+    font-family: var(--font);
+    font-weight: bolder;
+    border-radius: 4px;
+}
+
+.firstWinner {
+    background-color: var(--first-competitor-color);
+}
+
+.secondWinner {
+    background-color: var(--second-competitor-color);
+}
+
+.noneWinner {
+    background-color: var(--none-winner-color);
+
+    span {
+        opacity: var(--loser-score-opacity);
+    }
+
+    & #divider {
+        display: none;
+    }
+}
+
+#divider {
+    width: 1px;
+    background-color: var(--divider-color);
+}
+
+.verticalScoreBlock {
+    flex-direction: column;
+    height: 46px;
+    width: 20px;
+
+    & #divider {
+        height: 1px;
+        width: 100%;
+    }
+
+    & > span {
+        height: 100%;
+        text-align: center;
+    }
+}
+
+.loserScore {
+    opacity: var(--loser-score-opacity);
+}
