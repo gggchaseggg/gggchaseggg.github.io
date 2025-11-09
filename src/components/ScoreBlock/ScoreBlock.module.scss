@@ -9,11 +9,10 @@
         justify-content: center;
     }
 
-    width: 46px;
-    height: 20px;
+    width: var(--scoreblock-long-side);
+    height: var(--scoreblock-short-side);
     background-color: var(--first-competitor-color);
     color: var(--score-color);
-    font-family: var(--font);
     font-weight: bolder;
     border-radius: 4px;
 }
@@ -45,8 +44,8 @@
 
 .verticalScoreBlock {
     flex-direction: column;
-    height: 46px;
-    width: 20px;
+    height: var(--scoreblock-long-side);
+    width: var(--scoreblock-short-side);
 
     & #divider {
         height: 1px;
