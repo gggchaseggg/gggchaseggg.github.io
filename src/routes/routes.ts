@@ -1,9 +1,9 @@
-import { createBrowserRouter, redirect } from 'react-router'
+import { createHashRouter, redirect } from 'react-router'
 
 import { Layout } from '@tt/layout'
 import { MainPage, MatchPage } from '@tt/pages'
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: '/',
     Component: Layout,
