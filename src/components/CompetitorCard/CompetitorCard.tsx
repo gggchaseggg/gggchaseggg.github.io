@@ -1,4 +1,4 @@
-import type { FC, MouseEvent as ReactMouseEvent } from 'react'
+import type { FC } from 'react'
 
 import { useMatchStore } from '@tt/entities'
 import { useLongPress } from '@tt/shared'
