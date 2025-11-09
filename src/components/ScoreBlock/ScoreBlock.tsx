@@ -1,24 +1,20 @@
 import type { FC } from 'react'
 
-import { APP_CONFIG } from '@tt/config'
-
 import styles from './ScoreBlock.module.scss'
 import type { ScoreBlockProps } from './ScoreBlock.types'
 
 export const ScoreBlock: FC<ScoreBlockProps> = ({
   variant = 'horizontal',
-  winner,
-  score,
+  set: { winner, score, status },
 }) => {
-  const hasEnd = winner !== 'none'
+  const hasEnded = status === 'completed'
   const isFirstWinner = winner === 'first'
   const isSecondWinner = winner === 'second'
-  const backgroundColor =
-    winner === 'first'
-      ? styles.firstWinner
-      : winner === 'second'
-        ? styles.secondWinner
-        : styles.noneWinner
+  const backgroundColor = isFirstWinner
+    ? styles.firstWinner
+    : isSecondWinner
+      ? styles.secondWinner
+      : styles.noneWinner
   const rootStyles = [
     styles.scoreBlock,
     variant === 'vertical' ? styles.verticalScoreBlock : '',
@@ -26,8 +22,8 @@ export const ScoreBlock: FC<ScoreBlockProps> = ({
   ].join(' ')
   const firstScoreStyles = [isSecondWinner ? styles.loserScore : ''].join(' ')
   const secondScoreStyles = [isFirstWinner ? styles.loserScore : ''].join(' ')
-  const firstScore = hasEnd ? score.first : ''
-  const secondScore = hasEnd ? score.second : ''
+  const firstScore = hasEnded ? score.first : ''
+  const secondScore = hasEnded ? score.second : ''
 
   return (
     <div className={rootStyles}>

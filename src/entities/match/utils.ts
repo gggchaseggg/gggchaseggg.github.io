@@ -23,7 +23,10 @@ export const updateSet = (prevSet: SetInfo, competitor: Competitor) => {
     newCompetitorScore >= APP_CONFIG.SET_MAX_SCORE &&
     scoreDifference >= APP_CONFIG.DRAW_SCORE_DIFFERENSE
   // Завершение сета, если разрыв больше 2 после ничьей
-  if (isDrawEnd) set.winner = competitor
+  if (isDrawEnd) {
+    set.winner = competitor
+    set.status = 'completed'
+  }
 
   const isDraw =
     competitorScore >= APP_CONFIG.DRAW_MIN_SCORE &&

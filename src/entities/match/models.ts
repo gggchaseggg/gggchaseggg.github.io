@@ -1,10 +1,13 @@
 import type { Competitor, CompetitorWithNone } from '@tt/shared'
 
+export type Status = 'active' | 'completed' | 'not_started'
+
 export type Match = {
   id: number
   first: string
   second: string
-  score: [number, number]
+  status: Status
+  score: { first: number; second: number }
   sets: Array<SetInfo>
 }
 
@@ -13,6 +16,7 @@ export type SetInfo = {
   winner: CompetitorWithNone
   firstServer: Competitor
   server: CompetitorWithNone
+  status: Status
   score: { first: number; second: number }
   setStat: Array<SetStat>
 }

@@ -5,4 +5,5 @@ export type CompetitorCardProps = {
   name: string
   competitor: Competitor
   set: SetInfo
+  competitorMatchScore: number
 }

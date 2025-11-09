@@ -5,12 +5,11 @@ import type { SetsScoresProps } from './SetsScores.types'
 
 import { ScoreBlock } from '../ScoreBlock'
 
-export const SetsScores: FC<SetsScoresProps> = ({ sets, score }) => {
+export const SetsScores: FC<SetsScoresProps> = ({ sets }) => {
   return (
     <div className={styles.setsScores}>
-      <div className={styles.matchScore}>{`${score[0]} : ${score[1]}`}</div>
-      {sets.map(({ id, score: setScore, winner }) => (
-        <ScoreBlock key={id} score={setScore} winner={winner} />
+      {sets.map((set) => (
+        <ScoreBlock key={set.id} set={set} />
       ))}
     </div>
   )

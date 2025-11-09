@@ -8,6 +8,7 @@ import { updateSet } from './utils'
 
 type MatchStore = {
   match: Match
+  activeSetIndex: number
 
   actions: {
     setMatch: (match: Match) => void
@@ -17,11 +18,12 @@ type MatchStore = {
 
 export const useMatchStore = create<MatchStore>((set, get) => ({
   match: mockMatch,
+  activeSetIndex: 2,
 
   actions: {
     // ----- setters -----
     setMatch: (match) => {
-      set({ match })
+      set({ match, activeSetIndex: 1 })
     },
     // ----- entity actions -----
     increaseCompetitorScore: (setId, competitor) => {

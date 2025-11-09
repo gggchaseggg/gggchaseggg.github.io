@@ -1,4 +1,5 @@
 .competitorCard {
+  position: relative;
   width: var(--competitor-card-width);
   height: var(--competitor-card-height);
   font-weight: bolder;
@@ -18,7 +19,7 @@
 }
 
 .secondServer {
-  background: var(--second-competitor-color);
+  background-color: var(--second-competitor-color);
 }
 
 .firstDefender {
@@ -37,4 +38,32 @@
 
 .defender {
   background-color: var(--secondary-color);
+}
+
+.competitorHeader {
+  width: var(--competitor-header-footer-width);
+  height: var(--competitor-header-footer-height);
+  position: absolute;
+  top: 8px;
+  border-bottom: 1px solid currentColor;
+}
+
+.competitorName {
+  text-align: center;
+  font-size: var(--competitor-name-font-size);
+  margin-block: 0;
+}
+
+.competitorFooter {
+  height: var(--competitor-header-footer-height);
+  position: absolute;
+  bottom: 8px; 
+  width: var(--competitor-header-footer-width);
+  border-top: 1px solid currentColor;
+}
+
+.competitorMatchScore {
+  font-size: var(--competitor-match-score-font-size);
+  font-weight: bold;
+  text-align: center;
 }

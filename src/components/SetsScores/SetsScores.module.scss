@@ -6,6 +6,6 @@
 }
 
 .matchScore {
-  font-size: 24px;
+  font-size: var(--match-score-font-size);
   font-weight: bolder;
 }
