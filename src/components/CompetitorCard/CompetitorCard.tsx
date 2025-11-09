@@ -13,15 +13,16 @@ export const CompetitorCard: FC<CompetitorCardProps> = ({
   set,
   competitorMatchScore,
 }) => {
-  const { increaseCompetitorScore, decreaseCompetitorScore } = useMatchStore(
-    (s) => s.actions,
-  )
+  const { increaseCompetitorScore, decreaseCompetitorScore, endSet } =
+    useMatchStore((s) => s.actions)
 
+  const isSetCompleted = set.status === 'completed'
   const stls = getStyles(set, competitor)
 
   const longPressEvents = useLongPress({
     onLongPress: () => decreaseCompetitorScore(competitor),
-    onClick: () => increaseCompetitorScore(competitor),
+    onClick: () =>
+      isSetCompleted ? endSet() : increaseCompetitorScore(competitor),
   })
 
   return (

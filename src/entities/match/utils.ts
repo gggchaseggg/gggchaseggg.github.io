@@ -3,7 +3,7 @@ import { clone } from 'remeda'
 import { APP_CONFIG } from '@tt/config'
 import type { Competitor } from '@tt/shared'
 
-import type { SetInfo } from './models'
+import type { Match, SetInfo } from './models'
 
 export const increaseCompetitorScore = (
   prevSet: SetInfo,
@@ -25,6 +25,7 @@ export const increaseCompetitorScore = (
   if (isSomeoneWin) {
     set.winner = competitor
     set.status = 'completed'
+    set.server = 'none'
   }
 
   const isDraw = Object.values(set.score).every(
@@ -48,13 +49,6 @@ export const increaseCompetitorScore = (
   return set
 }
 
-/**
- * Что нужно сделать?
- * - вычесть очко +
- * - пересчитать подающего +
- * - пересчитать победителя(убрать, если он был) +
- * - убрать очко из истории
- */
 export const decreaseCompetitorScore = (
   prevSet: SetInfo,
   competitor: Competitor,
@@ -98,4 +92,36 @@ export const decreaseCompetitorScore = (
   }
 
   return set
+}
+
+export const swapPlayers = (match: Match) => {
+  const swappedMatch = {
+    ...match,
+    // Меняем имена игроков местами
+    first: match.second,
+    second: match.first,
+    // Меняем счет местами
+    score: {
+      first: match.score.second,
+      second: match.score.first,
+    },
+    // Обрабатываем все сеты
+    sets: match.sets.map((set) => ({
+      ...set,
+      // Меняем победителя сета
+      winner:
+        set.winner === 'first'
+          ? 'second'
+          : set.winner === 'second'
+            ? 'first'
+            : 'none',
+      // Меняем счет в сете
+      score: {
+        first: set.score.second,
+        second: set.score.first,
+      },
+    })),
+  }
+
+  return swappedMatch as Match
 }

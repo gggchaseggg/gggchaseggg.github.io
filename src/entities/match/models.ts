@@ -9,12 +9,12 @@ export type Match = {
   status: Status
   score: { first: number; second: number }
   sets: Array<SetInfo>
+  firstServer: Competitor
 }
 
 export type SetInfo = {
   id: number
   winner: CompetitorWithNone
-  firstServer: Competitor
   server: CompetitorWithNone
   status: Status
   score: { first: number; second: number }
