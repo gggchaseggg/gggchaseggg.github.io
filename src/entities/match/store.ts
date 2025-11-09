@@ -1,10 +1,11 @@
+import { clone } from 'remeda'
 import { create } from 'zustand'
 
 import type { Competitor } from '@tt/shared'
 
 import { mockMatch } from './mock'
 import type { Match } from './models'
-import { updateSet } from './utils'
+import { decreaseCompetitorScore, increaseCompetitorScore } from './utils'
 
 type MatchStore = {
   match: Match
@@ -12,7 +13,8 @@ type MatchStore = {
 
   actions: {
     setMatch: (match: Match) => void
-    increaseCompetitorScore: (setId: number, competitor: Competitor) => void
+    increaseCompetitorScore: (competitor: Competitor) => void
+    decreaseCompetitorScore: (competitor: Competitor) => void
   }
 }
 
@@ -25,22 +27,30 @@ export const useMatchStore = create<MatchStore>((set, get) => ({
     setMatch: (match) => {
       set({ match, activeSetIndex: 1 })
     },
+
     // ----- entity actions -----
-    increaseCompetitorScore: (setId, competitor) => {
-      const match = get().match
+    increaseCompetitorScore: (competitor) => {
+      const { match, activeSetIndex } = get()
+      const newMatch = clone(match)
 
-      const newSets = match.sets.map((item) => {
-        if (item.id !== setId) return item
+      newMatch.sets[activeSetIndex] = increaseCompetitorScore(
+        newMatch.sets[activeSetIndex],
+        competitor,
+      )
 
-        return updateSet(item, competitor)
-      })
+      set({ match: newMatch })
+    },
 
-      set({
-        match: {
-          ...match,
-          sets: newSets,
-        },
-      })
+    decreaseCompetitorScore: (competitor) => {
+      const { match, activeSetIndex } = get()
+      const newMatch = clone(match)
+
+      newMatch.sets[activeSetIndex] = decreaseCompetitorScore(
+        newMatch.sets[activeSetIndex],
+        competitor,
+      )
+
+      set({ match: newMatch })
     },
   },
 }))
