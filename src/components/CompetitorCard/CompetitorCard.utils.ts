@@ -1,8 +1,9 @@
 import type { SetInfo } from '@tt/entities'
+import type { Competitor } from '@tt/shared'
 
 import styles from './CompetitorCard.module.scss'
 
-export const getStyles = (set: SetInfo, competitor: 'first' | 'second') => {
+export const getStyles = (set: SetInfo, competitor: Competitor) => {
   const isThisServer = set.server === competitor
 
   const serverDefenderStyle = isThisServer ? styles.server : styles.defender

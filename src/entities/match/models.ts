@@ -1,3 +1,5 @@
+import type { Competitor, CompetitorWithNone } from '@tt/shared'
+
 export type Match = {
   id: number
   first: string
@@ -8,11 +10,11 @@ export type Match = {
 
 export type SetInfo = {
   id: number
-  winner: 'first' | 'second' | 'none'
-  firstServer: 'first' | 'second'
-  server: 'first' | 'second' | 'none'
+  winner: CompetitorWithNone
+  firstServer: Competitor
+  server: CompetitorWithNone
   score: { first: number; second: number }
   setStat: Array<SetStat>
 }
 
-export type SetStat = { ballWinner: 'first' | 'second' }
+export type SetStat = { ballWinner: Competitor }

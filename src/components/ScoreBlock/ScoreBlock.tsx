@@ -10,9 +10,7 @@ export const ScoreBlock: FC<ScoreBlockProps> = ({
   winner,
   score,
 }) => {
-  const hasEnd = Object.values(score).some(
-    (num) => num === APP_CONFIG.SET_MAX_SCORE,
-  )
+  const hasEnd = winner !== 'none'
   const isFirstWinner = winner === 'first'
   const isSecondWinner = winner === 'second'
   const backgroundColor =
